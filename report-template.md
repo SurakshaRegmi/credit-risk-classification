@@ -9,6 +9,7 @@ In this section, describe the analysis you completed for the machine learning mo
  The purpose of this analysis is to create and evaluate the accuracy of a data model that predicts the credit worthiness of potential borrowers. lending_data.csv dataset is used to build a machne learning model.
 
 * Explain what financial information the data was on, and what you needed to predict.
+  
 The financial information is based on:
 the size of the loan
 its interest rate
@@ -20,14 +21,17 @@ the total debt
 
 Based on the above data, healthy loan and high risk loan labels is needed to predict.
 
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`). 
+* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
+  
 To estimate credit worthiness, first,  the labels set is stored from the loan_status column in the y variable. Then, the features DataFrame (all the columns except loan_status) are stored in the X variable. The balance of the labels is checked with value_counts. The results showed that, in our dataset, 75036 loans were healthy and 2500 were high-risk.
 
-* Describe the stages of the machine learning process you went through as part of this analysis.  
+* Describe the stages of the machine learning process you went through as part of this analysis.
+   
 The train_test_split module from sklearn is used to split the data into training and testing variables, these are: X_train, X_test, y_train, and y_test. And  a random_state of 1 is assigned to the function to ensure that the train/test split is consistent, the same data points are assigned to the training and testing sets across multiple runs of code.
 
 
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method). 
+* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+A Logistic Regression Model is used with the original data. LogisticRegression(), from sklearn, with a random_state of 1 is used. I fit the model with the training data, X_train and y_train, and predicted on testing data labels with predict() using the testing feature data, X_test, and the fitted model, lr_model.
 
 
 ## Results
@@ -55,6 +59,7 @@ Summarise the results of the machine learning models, and include a recommendati
 Looking at the machine learning model 1 and 2, it seems that logistic regression with the oversampled data performed better when making predictions which is model 2.
 
 * Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
+  
 Performance depends on the problem we are trying to solve, if we need to predict the healthy loans the logistic regression model with the original data makes better predictions, the classification report generated a precision of 1.00, a recall of 0.99 and an f1-score of 1.00, while with the resampled data the precision was 0.99, the recall was 0.99, and the f1-score was 0.99. However, if we need to predict the high-risk loans the linear regression model with the resampled data does much better, the precision was 0.99, the recall was 0.99, and the f1-score was 0.99, while with the original data, the precision was 0.85, the recall was 0.91, and the f1-score was 0.88.
 
 It is more important to predict high-risk loans, therefore, I would recommend  model 2 because it does a much better job of predicting high-risk loans than the first model.
